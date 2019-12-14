@@ -175,15 +175,16 @@
                               <Assign.Value>
                                 <InArgument x:TypeArguments="x:String" xml:space="preserve">["Dear " + row.Item(6).ToString + ", "  + VbCrLf + VbCrLf + 
 "You have following unresolved narrative lines that are waiting for your completion."+ VbCrLf + 
-"Please note that all 3 columns (category, reason, preventive action) must be uploaded to SQL server."+ VbCrLf + VbCrLf + 
+"Please note that your input text must be modified in all 3 columns (category, reason, preventive action) and uploaded to SQL server."+ VbCrLf + VbCrLf + 
 "RMA items: " + row.Item(9).ToString + VbCrLf +
 "RT items: " + row.Item(10).ToString + VbCrLf  +
 "IT items: " + row.Item(11).ToString + VbCrLf + VbCrLf  +
 "To resolve your action items, upload narrative details using Excel narrative upload tool. " + VbCrLf + VbCrLf + 
-"Log details: '" + DNS.GetHostByName(Dns.GetHostName()).AddressList(0).ToString() + "', bot.001@hp.com,  '" + process_name + "',  '" + executed_by_user_name + "',  '" +  DateTime.Now.ToString + "'"]</InArgument>
+"Log details: '" + DNS.GetHostByName(Dns.GetHostName()).AddressList(0).ToString() + "', bot.001@hp.com,  '" + process_name + "',  '" + executed_by_user_name + "',  '" +  DateTime.Now.ToString + "'" + VbCrLf +
+"Buyer: " + row.Item(7).ToString + "; Coordinator: " + row.Item(12).ToString + "; Manager: " + row.Item(13).ToString]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <ui:SendOutlookMail Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="bot.001@hp.com" Bcc="vincent.chury@hp.com;vic.chia@hp.com;" Body="[mail_body]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[&quot;ACTION REQUIRED: narratives &quot; + YearMonth + &quot;: &quot; + row.Item(6).ToString]" To="[row.Item(7).ToString + &quot;; &quot; + row.Item(12).ToString + &quot;; &quot; + row.Item(13).ToString]">
+                            <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="bot.001@hp.com" Body="[mail_body]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[&quot;ACTION REQUIRED: narratives &quot; + YearMonth + &quot;: &quot; + row.Item(6).ToString]" To="[row.Item(7).ToString + &quot;; &quot; + row.Item(12).ToString + &quot;; &quot; + row.Item(13).ToString]">
                               <ui:SendOutlookMail.Files>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </ui:SendOutlookMail.Files>
