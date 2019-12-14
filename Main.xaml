@@ -173,7 +173,8 @@
                                 <OutArgument x:TypeArguments="x:String">[mail_body]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="x:String" xml:space="preserve">["Dear " + row.Item(6).ToString + ", "  + VbCrLf + VbCrLf + 
+                                <InArgument x:TypeArguments="x:String" xml:space="preserve">["Dear " + row.Item(6).ToString + ", "  + VbCrLf  +
+"System code: (" + row.Item(5).ToString + ") " + VbCrLf + VbCrLf + 
 "You have following unresolved narrative lines that are waiting for your completion."+ VbCrLf + 
 "Please note that your input text must be modified in all 3 columns (category, reason, preventive action) and uploaded to SQL server."+ VbCrLf + VbCrLf + 
 "RMA items: " + row.Item(9).ToString + VbCrLf +
