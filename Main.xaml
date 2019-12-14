@@ -160,7 +160,7 @@
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <If Condition="[row.Item(7).ToString &lt;&gt; &quot;Inactive&quot;]" sap:VirtualizedContainerService.HintSize="521,489" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If Condition="[row.Item(6).ToString &lt;&gt; &quot;Inactive&quot;]" sap:VirtualizedContainerService.HintSize="521,489" sap2010:WorkflowViewState.IdRef="If_1">
                         <If.Then>
                           <Sequence sap:VirtualizedContainerService.HintSize="376,341" sap2010:WorkflowViewState.IdRef="Sequence_5">
                             <sap:WorkflowViewStateService.ViewState>
@@ -173,19 +173,18 @@
                                 <OutArgument x:TypeArguments="x:String">[mail_body]</OutArgument>
                               </Assign.To>
                               <Assign.Value>
-                                <InArgument x:TypeArguments="x:String" xml:space="preserve">["Dear " + row.Item(6).ToString + ", "  + VbCrLf  +
-"System code: (" + row.Item(5).ToString + ") " + VbCrLf + VbCrLf + 
+                                <InArgument x:TypeArguments="x:String" xml:space="preserve">["Dear " + row.Item(5).ToString + ", "  + VbCrLf  + VbCrLf + 
 "You have following unresolved narrative lines that are waiting for your completion."+ VbCrLf + 
 "Please note that your input text must be modified in all 3 columns (category, reason, preventive action) and uploaded to SQL server."+ VbCrLf + VbCrLf + 
-"RMA items: " + row.Item(9).ToString + VbCrLf +
-"RT items: " + row.Item(10).ToString + VbCrLf  +
-"IT items: " + row.Item(11).ToString + VbCrLf + VbCrLf  +
+"RMA items: " + row.Item(8).ToString + VbCrLf +
+"RT items: " + row.Item(9).ToString + VbCrLf  +
+"IT items: " + row.Item(10).ToString + VbCrLf + VbCrLf  +
 "To resolve your action items, upload narrative details using Excel narrative upload tool. " + VbCrLf + VbCrLf + 
 "Log details: '" + DNS.GetHostByName(Dns.GetHostName()).AddressList(0).ToString() + "', bot.001@hp.com,  '" + process_name + "',  '" + executed_by_user_name + "',  '" +  DateTime.Now.ToString + "'" + VbCrLf +
-"Buyer: " + row.Item(7).ToString + "; Coordinator: " + row.Item(12).ToString + "; Manager: " + row.Item(13).ToString]</InArgument>
+"Buyer: " + row.Item(6).ToString + "; Coordinator: " + row.Item(11).ToString + "; Manager: " + row.Item(12).ToString]</InArgument>
                               </Assign.Value>
                             </Assign>
-                            <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="bot.001@hp.com" Body="[mail_body]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[&quot;ACTION REQUIRED: narratives &quot; + YearMonth + &quot;: &quot; + row.Item(6).ToString]" To="[row.Item(7).ToString + &quot;; &quot; + row.Item(12).ToString + &quot;; &quot; + row.Item(13).ToString]">
+                            <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Account="bot.001@hp.com" Body="[mail_body]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" Subject="[&quot;ACTION REQUIRED: narratives &quot; + YearMonth + &quot;: &quot; + row.Item(6).ToString]" To="vincent.chury@hp.com">
                               <ui:SendOutlookMail.Files>
                                 <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                               </ui:SendOutlookMail.Files>
