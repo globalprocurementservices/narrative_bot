@@ -76,7 +76,7 @@
       <Variable x:TypeArguments="x:String" Default="[Convert.ToString(Process.GetCurrentProcess.Id + Process.GetCurrentProcess.StartTime.GetHashCode + Process.GetCurrentProcess.StartTime.Millisecond + Process.GetCurrentProcess.StartTime.Minute + Process.GetCurrentProcess.StartTime.Month + Process.GetCurrentProcess.StartTime.Ticks)]" Name="process_name" />
       <Variable x:TypeArguments="x:String" Default="R2D2" Name="bot_name" />
       <Variable x:TypeArguments="x:String" Name="schedule_run_id" />
-      <Variable x:TypeArguments="x:String" Default="[Year(today()).ToString + DateTime.Now.AddMonths(-1).ToString(“MM”)]" Name="YearMonth" />
+      <Variable x:TypeArguments="x:String" Name="YearMonth" />
       <Variable x:TypeArguments="x:String" Default="far.red-41" Name="SQL_pass" />
       <Variable x:TypeArguments="ss:SecureString" Name="SQL_pass_secure" />
       <Variable x:TypeArguments="x:String" Name="SQL_auth" />
@@ -95,7 +95,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <Flowchart.StartNode>
-      <x:Reference>__ReferenceID12</x:Reference>
+      <x:Reference>__ReferenceID13</x:Reference>
     </Flowchart.StartNode>
     <FlowStep x:Name="__ReferenceID0">
       <sap:WorkflowViewStateService.ViewState>
@@ -115,9 +115,9 @@
     <FlowStep x:Name="__ReferenceID1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-          <av:Point x:Key="ShapeLocation">260,334.5</av:Point>
+          <av:Point x:Key="ShapeLocation">260,374.5</av:Point>
           <av:Size x:Key="ShapeSize">200,51</av:Size>
-          <av:PointCollection x:Key="ConnectorLocation">460,360 500,360</av:PointCollection>
+          <av:PointCollection x:Key="ConnectorLocation">460,400 500,400</av:PointCollection>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <ui:ExecuteQuery ContinueOnError="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DataTable="[NarrativesTable]" DisplayName="Pull Narratives" ExistingDbConnection="[SQL_connection]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ExecuteQuery_5" Sql="[&quot;EXEC [GPS].[GPS_narrative_alert] @YearMonth = '&quot; + YearMonth + &quot;', @Team = '%' ,@Buyer = '%' , @Office = '%' , @Region = '%', @Fyscal = '%'&quot;]">
@@ -129,9 +129,9 @@
         <FlowStep x:Name="__ReferenceID3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:Point x:Key="ShapeLocation">500,334.5</av:Point>
+              <av:Point x:Key="ShapeLocation">500,374.5</av:Point>
               <av:Size x:Key="ShapeSize">200,51</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">600,385.5 600,415.5 360,415.5 360,444.5</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">600,425.5 600,455.5 470,455.5 470,425.5 360,425.5 360,444.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Log" ExistingDbConnection="[SQL_connection]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ExecuteQuery_6" Sql="[&quot;INSERT INTO [GPS].[GPS_tbl_rpa_processing_log] ([bot_name],[process_name],[executed_by_user_name],[schedule_run_id],[log_step_name],[log_step_content]) VALUES ('&quot; + bot_name + &quot;','&quot; + process_name + &quot;','&quot; + executed_by_user_name + &quot;','&quot; + schedule_run_id + &quot;','SQL Query: Pull narratives for &quot; + YearMonth + &quot;','&quot; + NarrativesTable.Rows.Count.ToString + &quot;')&quot;]">
@@ -282,7 +282,7 @@
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <av:Point x:Key="ShapeLocation">500,254.5</av:Point>
               <av:Size x:Key="ShapeSize">200,51</av:Size>
-              <av:PointCollection x:Key="ConnectorLocation">600,305.5 600,335.5 470,335.5 470,305.5 360,305.5 360,334.5</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">600,305.5 600,335.5 230,335.5 230,284.5 100,284.5 100,314.5</av:PointCollection>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
           <ui:ExecuteQuery ContinueOnError="{x:Null}" DataTable="{x:Null}" TimeoutMS="{x:Null}" CommandType="Text" DisplayName="Log" ExistingDbConnection="[SQL_connection]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="ExecuteQuery_3" Sql="[&quot;INSERT INTO [GPS].[GPS_tbl_rpa_processing_log] ([bot_name],[process_name],[executed_by_user_name],[schedule_run_id],[log_step_name],[log_step_content]) VALUES ('&quot; + bot_name + &quot;','&quot; + process_name + &quot;','&quot; + executed_by_user_name + &quot;','&quot; + schedule_run_id + &quot;','SQL connection established','Data Source=c1w36622.itcs.hpicorp.net;Initial Catalog=CSI;Integrated Security=True')&quot;]">
@@ -291,7 +291,55 @@
             </ui:ExecuteQuery.Parameters>
           </ui:ExecuteQuery>
           <FlowStep.Next>
-            <x:Reference>__ReferenceID1</x:Reference>
+            <FlowStep x:Name="__ReferenceID12">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <av:Point x:Key="ShapeLocation">0,314.5</av:Point>
+                  <av:Size x:Key="ShapeSize">200,51</av:Size>
+                  <av:PointCollection x:Key="ConnectorLocation">100,365.5 100,395.5 230,395.5 230,344.5 360,344.5 360,374.5</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If Condition="[Now.Month = 1]" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="If_3">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If.Then>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[YearMonth]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[DateTime.Now.AddYears(-1).ToString(“yyyy”) + DateTime.Now.AddMonths(-1).ToString(“MM”)]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                </If.Then>
+                <If.Else>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[YearMonth]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[Year(today()).ToString + DateTime.Now.AddMonths(-1).ToString(“MM”)]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                </If.Else>
+              </If>
+              <FlowStep.Next>
+                <x:Reference>__ReferenceID1</x:Reference>
+              </FlowStep.Next>
+            </FlowStep>
           </FlowStep.Next>
         </FlowStep>
       </FlowStep.Next>
@@ -325,7 +373,7 @@
         </FlowStep>
       </FlowStep.Next>
     </FlowStep>
-    <FlowStep x:Name="__ReferenceID12">
+    <FlowStep x:Name="__ReferenceID13">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <av:Point x:Key="ShapeLocation">260,79</av:Point>
@@ -372,5 +420,6 @@
     <x:Reference>__ReferenceID9</x:Reference>
     <x:Reference>__ReferenceID10</x:Reference>
     <x:Reference>__ReferenceID11</x:Reference>
+    <x:Reference>__ReferenceID12</x:Reference>
   </Flowchart>
 </Activity>
